@@ -1,4 +1,3 @@
-
 import React, { PropTypes } from 'react'
 
 class HomePage extends React.Component {
