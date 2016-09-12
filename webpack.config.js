@@ -1,39 +1,26 @@
-
 var webpack = require('webpack');
 var combineLoaders = require('webpack-combine-loaders');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 require('es6-promise').polyfill();
 
 module.exports = {
-
   devtool: 'eval',
-
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    './src/js/main.js'
-  ],
-
-  output: {
-    path: __dirname + '/build',
-    publicPath: '/build/',
-    filename: '[name].js',
-    chunkFilename: '[name].[chunkhash].js'
+  entry: {
+    main: './src/js/main.js'
   },
-
-
+  output: {
+    path: __dirname + '/public/',
+    filename: '[name].js'
+  },
   module: {
-
     loaders: [
-
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel',
         query: {
-          "presets": ["es2015", "react"],
-          "plugins": ["react-hot-loader/babel", "transform-object-rest-spread"]
+          presets: ['es2015', 'react'],
+          plugins: ["react-hot-loader/babel", "transform-object-rest-spread"]
         }
       },
 
