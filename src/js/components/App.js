@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-require('../../sass/main.sass')
+import '../../sass/main.sass'
 
 class App extends React.Component {
 
