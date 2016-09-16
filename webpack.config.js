@@ -5,13 +5,21 @@ require('es6-promise').polyfill();
 
 module.exports = {
   devtool: 'eval',
-  entry: {
-    main: './src/js/main.js'
-  },
+
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    './src/js/main.js'
+  ],
+
   output: {
-    path: __dirname + '/public/',
-    filename: '[name].js'
+    path: __dirname + '/build',
+    publicPath: '/build/',
+    filename: '[name].js',
+    chunkFilename: '[name].js'
   },
+
   module: {
     loaders: [
       {
@@ -27,9 +35,7 @@ module.exports = {
       {
         test: /\.(sass|scss)$/,
         loader: combineLoaders([
-          {
-            loader: 'style',
-          },
+          'style',
           {
             loader: 'css',
             query: {

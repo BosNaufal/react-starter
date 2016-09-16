@@ -1,4 +1,7 @@
 import React from 'react';
+
+import '../../sass/main.scss';
+
 class App extends React.Component {
   render() {
     let { children } = this.props

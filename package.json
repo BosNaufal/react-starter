@@ -4,8 +4,8 @@
   "description": "Simple Starter For React Js Project",
   "main": "./src/js/components/App.js",
   "scripts": {
-    "start": "./node_modules/.bin/gulp serve",
-    "build": "./node_modules/.bin/webpack --config webpack-prod.config.js -p"
+    "build": "webpack --config webpack-prod.config.js -p",
+    "dev": "webpack-dev-server --hot --inline"
   },
   "repository": {
     "type": "git",
