@@ -3,7 +3,7 @@ const initialState = {
   all: []
 }
 
-function post(state = initialState, action) {
+export default function post(state = initialState, action) {
 
   switch (action.type) {
 
@@ -18,5 +18,3 @@ function post(state = initialState, action) {
   }
 
 }
-
-export default post;

@@ -12,7 +12,7 @@ module.exports = {
 
   output: {
     path: __dirname + '/build',
-    publicPath: '/build/',
+    publicPath: './build/',
     filename: '[name].js',
     chunkFilename: '[name].[chunkhash].js'
   },
@@ -34,6 +34,7 @@ module.exports = {
 
       {
         test: /\.(sass|scss)$/,
+        exclude: /(src\/sass\/global)/,
         loader: ExtractTextPlugin.extract(
           'style',
           combineLoaders([
@@ -58,27 +59,42 @@ module.exports = {
       },
 
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url',
-      },
-
-      {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url',
+        test: /\.(sass|scss)$/,
+        exclude: /(src\/sass\/scoped)/,
+        loader: ExtractTextPlugin.extract(
+          'style',
+          combineLoaders([
+            {
+              loader: 'css',
+            },
+            {
+              loader: 'sass'
+            },
+            {
+              loader: 'autoprefixer',
+              query: {
+                browsers: 'last 2 versions'
+              }
+            }
+          ])
+        )
       },
 
       {
         test: /\.css$/,
         loaders: ['style','css']
       },
+
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url',
       },
+
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url',
       },
+
       {
         test: /\.json$/,
         loader: 'json'
