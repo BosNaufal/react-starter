@@ -11,7 +11,7 @@ module.exports = {
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
-    './src/js/main.js'
+    './src/main.js'
   ],
 
   output: {
@@ -29,11 +29,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel',
-        query: {
-          presets: ["es2015", "react"],
-          plugins: ["react-hot-loader/babel", "transform-object-rest-spread"]
-        }
+        loader: 'babel'
       },
 
       {
@@ -104,6 +100,12 @@ module.exports = {
         loader: 'json'
       },
     ]
+  },
+
+  resolve: {
+    alias: {
+      components: __dirname + '/src/components',
+    }
   },
 
 };

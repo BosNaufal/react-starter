@@ -8,7 +8,7 @@ module.exports = {
 
   devtool: 'eval',
 
-  entry: './src/js/main.js',
+  entry: './src/main.js',
 
   output: {
     path: __dirname + '/build',
@@ -25,11 +25,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel',
-        query: {
-          "presets": ["es2015", "react"],
-          "plugins": ["react-hot-loader/babel", "transform-object-rest-spread"]
-        }
+        loader: 'babel'
       },
 
       {
@@ -100,6 +96,12 @@ module.exports = {
         loader: 'json'
       },
     ]
+  },
+
+  resolve: {
+    alias: {
+      components: __dirname + '/src/components',
+    }
   },
 
   plugins: [
