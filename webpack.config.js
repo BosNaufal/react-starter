@@ -9,7 +9,7 @@ module.exports = {
 
   entry: [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
+    'webpack-dev-server/client?http://localhost:8000',
     'webpack/hot/only-dev-server',
     './src/main.js'
   ],
@@ -34,55 +34,13 @@ module.exports = {
 
       {
         test: /\.(sass|scss)$/,
-        exclude: /(src\/sass\/global)/,
-        loader: combineLoaders([
-          {
-            loader: 'style',
-          },
-          {
-            loader: 'css',
-            query: {
-              modules: true,
-              localIdentName: '[name]__[local]__[hash:base64:5]'
-            }
-          },
-          {
-            loader: 'sass'
-          },
-          {
-            loader: 'autoprefixer',
-            query: {
-              browsers: 'last 2 versions'
-            }
-          }
-        ])
-      },
-
-      {
-        test: /\.(sass|scss)$/,
         exclude: /(src\/sass\/scoped)/,
-        loader: combineLoaders([
-          {
-            loader: 'style',
-          },
-          {
-            loader: 'css',
-          },
-          {
-            loader: 'sass'
-          },
-          {
-            loader: 'autoprefixer',
-            query: {
-              browsers: 'last 2 versions'
-            }
-          }
-        ])
+        loaders: ['style','css', 'sass'],
       },
 
       {
         test: /\.css$/,
-        loaders: ['style','css']
+        loaders: ['style','css?modules&importLoaders=1&localIdentName=[local]'],
       },
 
       {
@@ -100,6 +58,13 @@ module.exports = {
         loader: 'json'
       },
     ]
+  },
+
+  devServer: {
+    hot: true,
+    host: "0.0.0.0",
+    port: 8000,
+    historyApiFallback: true,
   },
 
   resolve: {

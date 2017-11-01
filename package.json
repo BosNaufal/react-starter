@@ -44,8 +44,11 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "pikaday": "^1.6.1",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
   }
 }
